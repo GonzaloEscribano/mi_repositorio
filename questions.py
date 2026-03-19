@@ -1,23 +1,28 @@
 import random
-words = [
-    "python",
-    "programa",
-    "variable",
-    "funcion",
-    "bucle",
-    "cadena",
-    "entero",
-    "lista",
-]
+words = {
+    "Programación" : ["python", "programa", "variable", "funcion", "bucle", "cadena", "entero", "lista"],
+    "Clubes" : ["lanus", "quilmes", "river", "boca", "chacarita", "ferro", "velez", "temperley"],
+    "Computadora" : ["procesador", "grafica", "ram", "fuente", "gabinete", "monitor", "teclado", "mouse", "auriculares"]
+}
 
-word = random.choice(words)
 guessed = []
 attempts = 6
 gano = False
 puntaje = 0
 
 print("¡Bienvenido al Ahorcado!")
-print()
+print("Escriba el nombre de alguna de las siguientes categorías para jugar:")
+
+for key in words:
+    print(f" {key}")
+    
+while True:
+    categoria_elegida = input("Ingrese la categoría: ").capitalize()
+    if categoria_elegida in words:
+        word = random.choice(words[categoria_elegida])
+        break
+    else:
+        print("Categoría no existente")
 
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
